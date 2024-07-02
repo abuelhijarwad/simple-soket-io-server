@@ -1,12 +1,16 @@
-// server.js
-const express = require('express');
-const app = express();
-const port = 3000;
+const io = require('socket.io')(3000);
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+io.on('connection', socket => {
+  console.log('New user connected');
+
+  socket.on('message', message => {
+    console.log('Message from client:', message);
+    socket.emit('message', 'Hello from the server');
+  });
+
+  socket.on('disconnect', () => {
+    console.log('User disconnected');
+  });
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+console.log('Socket.io server running at http://localhost:3000/');
