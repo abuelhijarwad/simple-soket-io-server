@@ -11,6 +11,8 @@
   "description": "",
   "dependencies": {
     "express": "^4.19.2",
+    "fs": "^0.0.1-security",
+    "socket.io-client": "^4.7.5",
     "soket.io": "^0.0.1-security"
   }
 }
